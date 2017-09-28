@@ -78,6 +78,7 @@ class ServerMgmtScenarioTest(ScenarioTest):
         edition = 'Basic'
         old_cu = 100
         new_cu = 50
+        new_storage_size = 179200
 
         rg = resource_group_1
         loc = 'westeurope'
@@ -167,6 +168,18 @@ class ServerMgmtScenarioTest(ScenarioTest):
                      JMESPathCheck('tags.key', '3'),
                      JMESPathCheck('sku.tier', edition),
                      JMESPathCheck('administratorLogin', admin_login)])
+
+        # update the server storage size
+        self.cmd('{} server update -g {} --name {} --storage-size {}'
+                 .format(database_engine, rg, servers[0], new_storage_size),
+                 checks=[
+                     JMESPathCheck('name', servers[0]),
+                     JMESPathCheck('resourceGroup', rg),
+                     JMESPathCheck('sslEnforcement', 'Enabled'),
+                     JMESPathCheck('tags.key', '3'),
+                     JMESPathCheck('sku.tier', edition),
+                     JMESPathCheck('administratorLogin', admin_login),
+                     JMESPathCheck('storageMb', new_storage_size)])
 
         # test restore to a new server, make sure wait at least 5 min after server created.
         from time import sleep

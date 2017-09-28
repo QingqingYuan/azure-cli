@@ -52,6 +52,7 @@ def _server_update_custom_func(instance,
                                capacity=None,
                                administrator_login_password=None,
                                ssl_enforcement=None,
+                               storage_mb=None,
                                tags=None):
     from importlib import import_module
     server_module_path = instance.__module__
@@ -64,7 +65,7 @@ def _server_update_custom_func(instance,
         instance.sku = None
 
     params = ServerUpdateParameters(sku=instance.sku,
-                                    storage_mb=None,
+                                    storage_mb=storage_mb,
                                     administrator_login_password=administrator_login_password,
                                     version=None,
                                     ssl_enforcement=ssl_enforcement,

@@ -5,6 +5,7 @@ __pycache__/
 # Virtual environment
 env/
 env27/
+venv/
 .python-version
 
 # PTVS analysis
@@ -24,6 +25,7 @@ build/
 
 # Test results
 TestResults/
+test_failures.txt
 
 # Credentials 
 credentials_real.json
@@ -95,3 +97,4 @@ artifacts/
 
 # Pytest
 .cache/
+az_command_coverage.txt

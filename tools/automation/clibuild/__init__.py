@@ -29,6 +29,7 @@ def build_all_debian(git_url, git_branch, cli_version, artifact_dir, arg_ns=None
         ('artful', 'ubuntu:artful'),
         ('xenial', 'ubuntu:xenial'),
         ('trusty', 'ubuntu:trusty'),
+        ('bionic', 'ubuntu:bionic'),
     ]
     with ThreadPoolExecutor(max_workers=len(dists)) as executor:
             tasks = {executor.submit(build_debian, dist_info, git_url, git_branch, cli_version, artifact_dir, arg_ns=arg_ns) for dist_info
@@ -56,7 +57,7 @@ def build_debian(dist_info, git_url, git_branch, cli_version, artifact_dir, arg_
 def build_docker(git_url, git_branch, cli_version, artifact_dir, arg_ns=None):
     cmd = ['docker', 'build', '--no-cache', '--quiet', '--build-arg', 'BUILD_DATE="`date -u +"%Y-%m-%dT%H:%M:%SZ"`"',
            '--build-arg', 'CLI_VERSION=' + cli_version, get_repo_root()]
-    print('Docker build started.')
+    print('Docker build started. The git url and branch parameters are ignored. We use the current repository.')
     image_id = check_output(cmd, universal_newlines=True).strip()
     image_id = image_id.split(':')[1]
     image_file_location = os.path.join(artifact_dir, 'docker-azure-cli-{}.tar'.format(cli_version))

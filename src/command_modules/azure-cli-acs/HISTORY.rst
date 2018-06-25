@@ -3,6 +3,65 @@
 Release History
 ===============
 
+2.1.1
+++++++
+* Updated options of `az aks use-dev-spaces` command. Added `--update` support.
+* `az aks get-credentials --admin` won't replace the user context in $HOME/.kube/config
+* expose read-only "nodeResourceGroup" property on managed clusters
+* fix `az acs browse` command error
+
+2.1.0
++++++
+* `az aks create` understands advanced networking (VNet) options
+* `az aks create` accepts options to enable Log Analytics monitoring and HTTP application routing addons
+* `az aks create --no-ssh-key` creates a cluster without using local SSH keys
+* `az aks create --enable-rbac` creates a cluster with Kubernetes Role-Based Access Control
+* `az aks create` handles Azure Active Directory auth options (PREVIEW)
+
+2.0.34
+++++++
+* `az aks get-credentials` creates the kube config file with more secure filesystem permissions
+* make --connector-name optional for `aks install-connector`, `aks upgrade-connector` and `aks remove-connector`
+* add 2 new Azure Container Instance regions for `aks install-connector`
+* `aks install-connector` add the normalized location into the helm release name and node name
+
+2.0.33
+++++++
+* add new Dev-Spaces commands: `az aks use-dev-spaces` and `az aks remove-dev-spaces`
+* fix typo in help message
+
+2.0.32
+++++++
+* remind the user that `az aks` is a preview service
+* fix the permission issue in `aks install-connector` when --aci-resource-group is not specified
+
+2.0.31
+++++++
+* `sdist` is now compatible with wheel 0.31.0
+
+2.0.30
+++++++
+* Minor fixes
+* aks created spn will be valid for 5 years
+
+2.0.29
+++++++
+* fix a certificate verification error for `az aks install-cli` in Cloud Shell / PS
+
+2.0.28
+++++++
+* Support Autorest 3.0 based SDKs
+* warn the user that `az aks browse` won't work in Azure Cloud Shell
+* add `aks upgrade-connector` command to upgrade an existing connector
+* `kubectl` config files are more readable block-style YAML
+
+2.0.27
+++++++
+* use the virtual-kubelet-for-aks helm chart for `aks install-connector` by default
+* fix the service principal insufficient permission to create ACI container group issue
+* add --aci-container-group, --location, --image-tag optional parameters for `aks install-connector`
+* remove deprecation notice from `aks get-versions`
+
 2.0.26
 ++++++
 * rename `aks get-versions` to `aks get-upgrades` in the interest of accuracy

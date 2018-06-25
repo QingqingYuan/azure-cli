@@ -2,10 +2,45 @@
 
 Release History
 ===============
+
+2.0.31
+++++++
+* Minor fixes
+
+2.0.30
+++++++
+*  add `account management-group` commands.
+
+2.0.29
+++++++
+* Minor changes
+
+
+2.0.28
+++++++
+* Minor changes
+
+2.0.27
+++++++
+* `policy definition create`: Add support for `--metadata`.
+* `policy definition update`: Add support for `--metadata`, `--set`, `--add`, `--remove`.
+* `sdist` is now compatible with wheel 0.31.0
+
+2.0.26
+++++++
+provider operation list/show: (breaking change)`api-version` is no longer required to run the command
+
+2.0.25
+++++++
+* Support Autorest 3.0 based SDKs
+
+2.0.24
+++++++
+* `group deployment export`: On failure, command will now output a partial template and any failures.
+
 2.0.23
 ++++++
 * feature: bring back 'feature show' command
-* Minor fixes.
 
 2.0.22
 ++++++
